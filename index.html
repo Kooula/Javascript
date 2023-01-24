@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <link href="styles.css" rel="stylesheet"> 
+    <title>Memory</title>
+</head>
+
+<body>
+    <div>
+        <h1 class="pageTitle">Memori igra</h1>
+    </div>
+    <div class="square">
+        <div class="game-info-container">
+        <div class="game-info">Bodovi:<span id="score"></span></div>
+        <div class="game-info"><span id="wrong"></span></div>
+       </div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Donatelo.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Donatelo.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/leonardo.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/leonardo.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Michelangelo.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Michelangelo.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Sensei.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Sensei.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Raphael.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Raphael.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Shredder.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/Shredder.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/mbape.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/mbape.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/piza.jpg"></img></div>
+       <div class="box"><img class="hide" onClick="clickedCard(this)" src="Likovi/piza.jpg"></img></div>
+    </div> 
+        <script>
+            let boxes = Array.from(document.getElementsByClassName('box'))
+            let scoreTekst = document.querySelector('#score')
+            let wrongTekst = document.querySelector('#wrong')
+
+
+
+         card1 = null;
+         card2 = null;
+         score = 0
+         scoreTekst.innerHTML = score
+         boxesArray = boxes
+        
+    
+
+
+
+         for (let i = this.boxesArray.length -1; i > 0 ; i-- ){
+            let randIndex = Math.floor(Math.random() * (i + 1));
+            this.boxesArray[randIndex].style.order = i;
+            this.boxesArray[i].style.order = randIndex
+         }
+
+
+         
+         function clickedCard(card) {
+            if(card1 == null)
+            {
+                card.className = 'show'
+                card1 = card
+            }
+            else if(card2 == null)
+            {
+                card.className = 'show'
+                card2 = card
+                setTimeout('matchCheck()', 500)
+  
+            }
+         }
+
+       
+         function matchCheck() {
+            if(card1.src == card2.src){
+                scoreTekst.innerHTML = ++score
+                card1 = null;
+                card2 = null;
+            }
+            else {
+               card1.className = 'hide';
+               card2.className = 'hide';
+               wrongTekst.innerHTML= 'Nije par'
+               setTimeout(function () {
+                wrongTekst.innerHTML= '';
+               }, 1000)
+               card1 = null;
+               card2 = null;
+            }
+         }
+
+
+        </script>
+</body>
+
+</html>

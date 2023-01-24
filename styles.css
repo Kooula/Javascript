@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+}
+img {
+    height: 175px;
+    width: 125px;
+}
+
+.box {
+    position: relative;
+    height: 175px;
+    width: 125;
+}
+body {
+    background: grey;
+    margin: 0;
+}
+.hide {
+    filter: brightness(0.0);
+}
+
+.show {
+    filter: brightness(1.0);
+}
+.pageTitle {
+    color: blue;
+    text-align: center;
+    font-weight: normal;
+    font-size: 6em;
+}
+
+.game-info-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-info {
+    color: blueviolet;
+    font-size: 3em;
+}
+
+.square {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin: 50px;
+    justify-content: center;
+    perspective: 500px;
+  }
+
